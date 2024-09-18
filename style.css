@@ -1,0 +1,66 @@
+body {
+    background-color: powderblue;
+    font-family: "Times New Roman", "Times New Roman", serif;
+}
+li {
+    list-style-type: lower-alpha;
+    padding: 5px;
+
+}
+a{
+    background-color: whitesmoke;
+    text-align: center;
+}
+#page-title {
+    color: aliceblue;
+    text-align: center;
+}
+
+.favorite-section {
+    margin: 20px;
+    padding: 10px;
+    border: 3px  black double;
+
+
+}
+
+.section-header {
+    font-size: 1.5em;
+    color: black;
+}
+
+#favorite-movie-title {
+    font-style: italic;
+    color: purple;
+}
+
+#favorite-music-name {
+   background:  green;
+}
+
+#most-favorite-food {
+    font-size: 1.2em;
+    color: black;
+}
+
+.favorite-image {
+    width: 200px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+table {
+    width: 100%;
+    border-bottom-style: double;
+
+}
+
+th {
+    background-color: wheat;
+    color: black;
+}
+
+td {
+    background-color: powderblue;
+}
+
