@@ -1,0 +1,35 @@
+
+body {
+
+    background-color: whitesmoke;
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+h1 {
+    color: black;
+}
+
+
+.missile-link {
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+}
+
+#real-alert {
+    background-color: red;
+    border: 3px solid red;
+}
+
+
+#test-only {
+    background-color: green;
+    border: 3px solid darkgreen;
+}
+
+#herf
+
+
+

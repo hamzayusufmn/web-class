@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>conference registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Dots:wght@400..700&family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
+
+<link href="conference.css" type="text/css" rel="stylesheet">
+</head>
+<body class="m-4">
+<h1 class=" header-bg-secondary-subtle mb-4 p-3 rounded-3 text-center border">Conference Registration</h1>
+
+
+<form>
+
+
+  <div class="col-md-6">
+    <label class="form-label" for="name">Name:</label>
+    <input class="form-control" id="name" name="name" type="text" maxlength="70" required>
+  </div>
+
+
+  <div class="col-md-6">
+    <label class="form-label" for="password">Password:</label>
+    <input class="form-control" id="password" name="password" type="password" required>
+  </div>
+
+
+  <div class="col-md-6">
+    <label class="form-label" for="email">Email:</label>
+    <input class="form-control" id="email" name="email" type="email" required>
+  </div>
+
+
+  <div class="col-md-6">
+    <label class="form-label" for="tshirt">T-shirt Size:</label>
+    <select class="form-control" id="tshirt" name="tshirt" required>
+      <option value="" disabled selected>Select size</option>
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+    </select>
+  </div>
+
+
+  <div class="col-md-6">
+    <label class="form-label" for="dob">Date of Birth:</label>
+    <input class="form-control" id="dob" name="dob" type="date" required>
+  </div>
+
+
+  <div class="col-md-6">
+    <p class="mx-2">Receive email updates?</p>
+    <div class="form-check">
+      <input class="form-check-input" id="yes" name="emailUpdates" type="radio"  required>
+      <label class="form-check-label" for="yes">Yes</label>
+    </div>
+    <div class="col-md-6">
+      <input class="form-check-input" id="no" name="emailUpdates" type="radio"  required>
+      <label class="form-check-label" for="no">No</label>
+    </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <p class="mx-2">Choose sessions to attend:</p>
+    <div class="col-md-6">
+      <input class="form-check-input" id="morningSession" name="sessions" type="checkbox" >
+      <label class="form-check-label" for="morningSession">Morning Session</label>
+    </div>
+    <div class="col-md-6">
+      <input class="form-check-input" id="afternoonSession" name="sessions" type="checkbox" >
+      <label class="form-check-label" for="afternoonSession">Afternoon Session</label>
+    </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <label class="form-label" for="specialRequests">Special Requests:</label>
+    <textarea class="form-control" id="specialRequests" name="specialRequests" rows="7" cols="70"></textarea>
+  </div>
+
+
+  <div class="form-check-input text-center">
+    <input class="btn btn-primary" type="submit">
+  </div>
+
+</form>
+
+
+</body>
+</html>
