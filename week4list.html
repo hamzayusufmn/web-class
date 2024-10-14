@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<h1>List Generator</h1>
+
+<input id="new-list-item-text">
+<button id="add-new-item">Add new list item</button>
+<button id="clear-list">Clear list</button>
+
+<ul id="list-of-items"></ul>
+
+<script>
+    let newListItemTextInput = document.querySelector('#new-list-item-text');
+    let addNewItemButton = document.querySelector('#add-new-item');
+    let clearListButton = document.querySelector('#clear-list');
+    let listOfItems = document.querySelector('#list-of-items');
+
+
+    let itemCount = 0;
+    const maxItems = 10;
+    // this will only let ten items before reset
+    addNewItemButton.addEventListener('click', function() {
+        alert('hello')
+        // figure out what the user entered
+        // make new list item
+        // click the item
+        // add the list item to the ul
+        // make sure the alert hello pops up when user clicks hello
+        let newInputText = newListItemTextInput.value.trim();
+        console.log(newInputText)
+
+        if (newInputText.length === 0) {
+            alert("Please enter text between 1 and 50 characters.");
+            return;
+        } else if (newInputText.length > 50) {
+            alert("Error, this text goes over the 50-character limit.");
+            return;
+        }
+
+        // Check if the list already has 10 items
+        if (itemCount >= maxItems) {
+            alert("Max of 10 items allowed. Please clear the list to add more.");
+            return;
+        }
+        let newListItemElement = document.createElement('li');
+        newListItemElement.innerHTML = newInputText;
+        listOfItems.appendChild(newListItemElement);
+
+        // Clear the input field after adding
+        newListItemTextInput.value = '';
+
+
+    });
+
+    // Function to clear the list when the clear button is clicked
+    clearListButton.addEventListener('click', function() {
+        // Remove all list items
+        listOfItems.innerHTML = '';
+
+        // Reset the item count
+        itemCount = 0;
+
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Game</title>
+</head>
+<body>
+<p> what is the capital of Minnesota</p>
+
+<button class = "wrong-answer"> Red Wing</button>
+<button class = "wrong-answer"> Minneapolis</button>
+<button id ="correct-answer"> Saint Paul </button>
+
+<p id = "results"></p>
+
+<script>
+
+  let correctAnswerButton = document.querySelector('#correct-answer')
+  let defaultButtonColor = correctAnswerButton.style.background
+  console.log(correctAnswerButton)
+// this will allow for correct answer to appear on console log rmr to watch for spelling
+  // selecting correct button is also important
+  let result = document.querySelector('#results')
+   let wrongAnswerButtons = document.querySelectorAll('.wrong-answer')
+  // adding event listener
+  wrongAnswerButtons.forEach(function (wrongAnswerButton) { //loop for both wrong answers
+      console.log(wrongAnswerButton)
+      wrongAnswerButton.addEventListener('click', function () {
+          result.innerHTML = "Wrong Answer, Please try again."
+          correctAnswerButton.style.background = defaultButtonColor
+
+      })
+  })
+// this will correct answer event listener to the correct answer
+  correctAnswerButton.addEventListener('click', function () {
+      result.innerHTML = 'Correct answer'
+      correctAnswerButton.style.background = 'green'
+  } )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
