@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tree Order Form</title>
+
+    <style>
+        input, select {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 5px 5px 0px;
+            box-sizing: border-box;
+        }
+
+        input.error, select.error {
+            border: 2px red solid;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h1>Minnesota Tree Order Form</h1>
+
+<p>Enter information to order your tree. All fields are required.</p>
+
+<h2>Order Information</h2>
+
+<label for="homeowner-name">Homeowner Name</label><input id="homeowner-name" name="homeowner-name">
+<br>
+<label for="homeowner-house-number">House Number</label><input id="homeowner-house-number" name="homeowner-house-number">
+<br>
+<label for="homeowner-street-name">Street Name</label><input id="homeowner-street-name" name="homeowner-street-name">
+<br>
+<label for="city">City</label><input id="city" name="city">
+<br>
+<label for="state">State</label><input id="state" name="state" value="Minnesota" disabled>
+<br>
+<label for="zipcode">Zip Code</label><input id="zipcode" name="zipcode">
+<br>
+
+<label for="tree-type">Tree Type</label>
+<select id="tree-type">
+    <option disabled selected value=""> Select a tree </option>
+    <option name="tree-type">Cedar</option>
+    <option name="tree-type">Maple</option>
+    <option name="tree-type">Oak</option>
+</select>
+<br>
+
+<button id="submit-order">Submit Order</button>
+
+<h2>Order Summary</h2>
+
+<p id="order-summary"></p>
+
+<script>
+    let homeownerNameInput = document.querySelector('#homeowner-name');
+    let homeownerHouseNumberInput = document.querySelector('#homeowner-house-number');
+    let homeownerStreetNameInput = document.querySelector('#homeowner-street-name');
+    let cityInput = document.querySelector('#city');
+    let zipcodeInput = document.querySelector('#zipcode');
+    let treeTypeSelect = document.querySelector('#tree-type');
+
+    let submitButton = document.querySelector('#submit-order');
+    let orderSummaryParagraph = document.querySelector('#order-summary');
+
+    submitButton.addEventListener('click', function(event) {
+        event.preventDefault();
+// input values
+        let name = homeownerNameInput.value;
+        let houseNumber = homeownerHouseNumberInput.value;
+        let streetName = homeownerStreetNameInput.value;
+        let city = cityInput.value;
+        let zipcode = zipcodeInput.value;
+        let treeType = treeTypeSelect.value;
+// gets rid  of previous errors
+        let inputs = [homeownerNameInput, homeownerHouseNumberInput, homeownerStreetNameInput, cityInput, zipcodeInput, treeTypeSelect];
+        inputs.forEach(input => input.classList.remove('error'));
+// holds errors
+        let errors = [];
+// checks if name is added
+        if (!name) {
+            errors.unshift("Homeowner name is required.");
+            homeownerNameInput.classList.add('error');
+        } // ensures that house number is tested
+        if (!houseNumber) {
+            errors.unshift("House number is required.");
+            homeownerHouseNumberInput.classList.add('error');
+        }
+        if (!streetName) {
+            errors.unshift("Street name is required.");
+            homeownerStreetNameInput.classList.add('error');
+        }
+        if (!city) {
+            errors.unshift("City is required.");
+            cityInput.classList.add('error');
+        }
+        if (!zipcode) {
+            errors.push("Zip code is required.");
+            zipcodeInput.classList.add('error');
+        } else if (isNaN(Number(zipcode))) {
+            errors.push("Zip code must be numeric.");
+            zipcodeInput.classList.add('error');
+        } else if (zipcode < 55001 || zipcode > 56763) {
+            errors.push("Zip code must be between 55001 and 56763.");
+            zipcodeInput.classList.add('error');
+        }
+        if (!treeType) {
+            errors.push("Tree type is required.");
+            treeTypeSelect.classList.add('error');
+        }
+
+        if (errors.length > 0) {
+            console.log(errors.join('\n'));
+            return; //
+        }
+// used ` to add order summary that detials owner, house and tree type
+        console.log(`Order Summary:
+        Homeowner: ${name}
+        Address: ${houseNumber} ${streetName}, ${city}, Minnesota, ${zipcode}
+        Tree Type: ${treeType}`);
+
+        orderSummaryParagraph.textContent = `Order Summary:
+        Homeowner: ${name}
+        Address: ${houseNumber} ${streetName}, ${city}, Minnesota, ${zipcode}
+        Tree Type: ${treeType}`;
+    });
+</script>
+
+</body>
+</html>
