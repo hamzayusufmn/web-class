@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Vue to do list </title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+<body>
+
+<div id = 'app'>
+    <h1> task list </h1>
+    <h2> please enter your to-do list</h2>
+
+    <label> please enter your to-do list </label>
+    <input v-model="newTask">
+    <button v-on:click="addTask"> add task </button>
+<ul>
+ <li v-for="task in taskList">
+     {{ task}}
+ </li>
+</ul>
+
+
+
+
+
+
+</div>
+
+<script>
+    const {createApp, ref } = Vue
+
+    createApp({
+        setup() {
+
+            const taskList = ref( [ 'water plants', 'finsh dishes', 'clean bathroom'])
+// this will update if changed
+
+            const newTask = ref('')
+
+            function addTask() {
+                if (newTask.value) {
+                    taskList.value.push(newTask.value)
+                    newTask.value = ''
+                }
+            }
+
+
+
+            return {
+                taskList, newTask, addTask
+
+            }
+        }
+
+    }).mount('#app')
+
+
+
+
+// there is a loop in li and this can be updated in the console to be added aswell.
+    // another reminder for future vue.js labs is this is reactive and this setup is important
+// function add task will ensure user can add a task and it will go into list
+    // the list will update each time and will update if array is changed and will rerun
+    //
+</script>
+
+</body>
+</html>

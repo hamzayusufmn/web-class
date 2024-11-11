@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Vue</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+<body>
+
+<div id = 'app'>
+
+    <h1> Hello Vue!</h1>
+  <p>  {{ messagewithExclamationpoint }} </p>
+    <button v-on:click="addexclamationpoints">  add Exclamation points </button>
+    <button v-on:click="clearexclamationpoints"> Clear</button>
+
+</div>
+
+<script>
+    const { createApp, ref, computed} = Vue
+    // its a function we are opreating
+
+    createApp({
+        setup() {
+            // define things the app needs
+
+            const message = ref('hi')
+            const numberOfexclamtionspoints = ref(1)
+
+            function addexclamationpoints() {
+                if (numberOfexclamtionspoints.value < 10 ) {
+                    numberOfexclamtionspoints.value ++
+                } else {
+                    alert('no more exclamations point')
+                }
+
+            }
+             function clearexclamationpoints() {
+                numberOfexclamtionspoints.value = 1
+
+             }
+
+             const messagewithExclamationpoint = computed(function () {
+                 let computedMessage = message.value
+                 // add " based om number and we will do it with loop
+                 for(let x = 0; x < numberOfexclamtionspoints.value; x++) {
+                     computedMessage = computedMessage + '!'
+                 }
+                 return computedMessage
+             })
+
+            return  {
+                message,numberOfexclamtionspoints, messagewithExclamationpoint,
+                addexclamationpoints,clearexclamationpoints
+            }
+        }
+    }).mount('#app') // connect vue with app
+
+
+
+// after adding clear it will reset after ten exclamation points
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

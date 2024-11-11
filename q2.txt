@@ -1,0 +1,4 @@
+the image that states the total was accessed but not defined means it wasn't added
+on the return function and wasn't identified within the vue project.  not adding it to a v-on or const or return
+causes this. fixing this would include checking spelling and making sure you add it to vue project. a good tip is also including
+the return for items before you write functions or const. for this particular picture adding total and define it will fix the issue

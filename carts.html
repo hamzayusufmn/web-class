@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VUE CARTS </title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<style>
+
+    th, td {
+        width: 25%;
+        text-align: center;
+
+    }
+</style>
+</head>
+<body>
+
+<div id = 'app'>
+
+<table>
+    <tr>
+    <th> item </th>
+    <th> unit price </th>
+    <th> quantity <th>
+    <th> Total </th>
+    </tr>
+
+
+    <tr>
+        <td>{{ name }}</td>
+        <td>{{ unitprice }}</td>
+        <td><input type="number" v-model="quantity" ></td>
+        <td>{{ total }}</td>
+    </tr>
+</table>
+
+</div>
+
+<script>
+    const {createApp, ref, computed } = Vue
+
+    createApp({
+        setup() {
+        const name = ref('hat')
+            const quantity = ref(1)
+            const  unitprice = ref(4.99)
+
+
+            const total = computed( function () {
+                const totalPrice = quantity.value * unitprice.value
+                const formattedPrice = totalPrice.toFixed(2)
+                return formattedPrice
+            })
+
+
+            return {
+                name, quantity, unitprice, total
+
+            }
+        }
+
+    }).mount('#app')
+
+    // issue we ran into is using total while not defining it.
+// can happen if its a typo
+
+// multypying the vlaue by unit price will give total price, formatted price needs to be return aswell
+
+
+</script>
+
+</body>
+</html>
