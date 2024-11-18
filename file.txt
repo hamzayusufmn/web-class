@@ -12,8 +12,10 @@ Create a new text file with your response. Write about 2 paragraphs.
 for our week 4 lab of our student club manager program  i noticed it needed us to write the input on the lower part of the code
 compared to adding the v-model in the input section of the code. for example clearing the input value in week 4 we needed to update it each time.
 in vue.js there was a link between two codes and was automatically updated when we entered different values. writing event listeners and changing code when data changes
-is how vanilla javascript works. in vue.js there is data binding where you can use v-models and this helps with updates.
+is how vanilla javascript works. in vue.js there is data binding where you can use v-models and this helps with updates. some similarities between both is that they use JavaScript and  use input,buttons and scripts.
+
+
 
 there was an introduction of ref and computed which are shown without me changing it manually. i prefer vue.js as it was pretty understandable and learning computed and reactive data and picking
-up on little things such as returning functions and ensuring to add all , i also feel like the code was much cleaner and easier to follow along as vue.js and html part of code had two clear seprations and there was less confusion
+up on little things such as returning functions and ensuring to add  , i also feel like the code was much cleaner and easier to follow along as vue.js and html part of code had two clear seprations and there was less confusion
 on code being misdirected. using vue.js on console logs and seening the process and adding inputs there and seeing it change on developer tools was also another reason i prefer vue.js
