@@ -145,8 +145,16 @@
                 }
                 if (newStudentGpa.value.length  === 0) {
                     errors.value.push('please enter gpa number from 1-4')
+
                     // checks if gpa is from 1-4
                 }
+                 if(newStudentGpa.value < 0) {  // we are checking if value is less than 0
+                     errors.value.push("enter a gpa more than 0 please!")
+                 }
+
+                 if(newStudentGpa.value > 4) {
+                     errors.value.push("enter a gpa from 0-4 please!")
+                 }
 
 
 
