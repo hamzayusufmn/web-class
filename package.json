@@ -1,0 +1,19 @@
+{
+  "name": "combine_wyr_express_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hamza",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "hbs": "^4.2.0"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
