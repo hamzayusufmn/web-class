@@ -1,8 +1,9 @@
 <script setup>
 
-import { ref } from 'vue'
+import {ref, watch} from 'vue'
 
 import { useStudentStore } from '../stores/StudentStore'
+import {storeToRefs} from "pinia";
 
 const studentStore = useStudentStore() 
 
@@ -10,6 +11,15 @@ const newStudentName = ref('')
 const newStarID = ref('')
             
 const formErrors = ref([])
+
+const {addNewStudentErrors} = storeToRefs(studentStore)
+// use studentstore rather than store to refs
+watch(addNewStudentErrors, () => {
+if (addNewStudentErrors.value && addNewStudentErrors.value.length > 0) {
+  alert(addNewStudentErrors.value.join('\n'))
+  // this will be set and we created a watch to see if the reactive data changes and doesnt work
+}
+})
 
 
 const addStudent = () => {

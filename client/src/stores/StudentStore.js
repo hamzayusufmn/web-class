@@ -1,57 +1,85 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
+import { mande } from 'mande'
+
+const studentApi = mande('api/students')
 
 export const useStudentStore = defineStore('students', () => {
 
-    const studentList = ref([
-        { name: "A. Student", starID: "aa1234aa", present: false },
-        { name: "B. Student", starID: "bb1234bb", present: false }
-    ])
+    const sortedStudents = ref([])
 
-    const mostRecentStudent = ref( {} )
+    const mostRecentStudent = ref({})
+    const addNewStudentsErrors = ref([])
+
+    function getAllStudents() {
+        // this will make api request to get students and save them in storeS
+        studentApi.get().then(students => {
+            sortedStudents.value = students
+        }).catch(err => {
+            addNewStudentsErrors.value = err.body
+        })
+    }
 
     function addNewStudent(student) {
-        studentList.value.push(student)
+        studentApi.post(student).then(() => {
+            getAllStudents()
+            // this will request students in the list and once list is updated browser should update
+        }).catch(err => {
+            addNewStudentsErrors.value = err.body
+
+        })
+
     }
 
     function deleteStudent(studentToDelete) {
-        studentList.value = studentList.value.filter( (student) => {
-            return studentToDelete != student
+        const deleteStudentAPI = mande(`/api/students/${studentToDelete.id}`)
+        deleteStudentAPI.delete().then( () => {
+            getAllStudents()
+            mostRecentStudent.value = {}
+        }) .catch(err => {
+            console.log(err)
         })
+        // student id like 2,3,4 on httpi will allow for students selected to be deleted
+        // each number is only used once as id and if u enter number that isnt there message indicting student wasnt found
+        // will pop up
+
     }
 
     function arrivedOrLeft(student) {
-        // Returns -1 if the student is not found
-        const studentToModifyIndex = studentList.value.findIndex(s => s.starID == student.starID)
-        if (studentToModifyIndex != -1) {
+     const editStudentAPI = mande(`/api/students/${student.id}`)
+        editStudentAPI.patch(student).then ( () => {
+            getAllStudents()
             mostRecentStudent.value = student
-            studentList.value[studentToModifyIndex] = student
-        }
+            // added this because it wasnt here
+            // this will delete student and then get all students after it has been succesfully delete
+        }).catch(err => {
+            addNewStudentsErrors.value = err.body
+        })
     }
 
-    const sortedStudents = computed( () => {
-        return studentList.value.toSorted( (s1, s2) => {
-            return s1.name.localeCompare(s2.name)
-        })
+
+
+    const studentCount = computed(() => {
+        return sortedStudents.value.length
     })
 
-    const studentCount = computed( () => {
-        return studentList.value.length
-    })
-
-    return { 
+    return {
         // reactive data
-        studentList, 
-        mostRecentStudent, 
-
+        // studentList,
+        mostRecentStudent,
+        sortedStudents,
+        addNewStudentsErrors,
         // functions
-        addNewStudent, 
-        deleteStudent, 
-        arrivedOrLeft, 
+        addNewStudent,
+        deleteStudent,
+        arrivedOrLeft,
 
         // computed properties
-        sortedStudents,
-        studentCount
-    }
 
+        studentCount,
+        getAllStudents
+
+
+    }
 })
+

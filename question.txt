@@ -1,0 +1,10 @@
+the main difference i noticed between vue.js and express is how much express works in the backround
+to ensure our code works. for example, using post and patch in HTTTPI and developer tools allowed use to test everything
+ane ensure everything was smooth. vue.js was more frontend in terms of visual items and working along as code was still being written.
+
+express also was the main framework we connected to azure and was more online based as it involed using our local host and uploading to azure. we could use
+sql database to see our data and httpi to ensure our post and patch worked and served as a visual guide to ensure our code was working .
+
+a key component we used in vue.js was data binding and this allowed for v-on call and changes to ask users questions.
+the vue.app handled in a manner where we can enter data and adjust our data in the app. api requests were used to ensure to get the questions and alsp deal
+with webpage crashes like a user entering the wrong data, and giving error codes to issue that users might encounter.

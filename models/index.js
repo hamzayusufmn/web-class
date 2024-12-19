@@ -12,8 +12,11 @@ const createStudentModel = require('./student')
 
 const env = process.env.NODE_ENV || 'development'
 
-const config = configJson[env]  // this will read the config object for either production or devlopment
+const dbPassword = process.env.DB_PASSWORD
 
+// this is included in set up for azure database
+const config = configJson[env]  // this will read the config object for either production or devlopment
+ config.password = dbPassword
 const sequelize = new Sequelize(config)
 
 const database = {
